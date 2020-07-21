@@ -5,6 +5,7 @@
     "sourceMap": true,
     "outDir": "./dist",
     "declaration": true,
+    "lib": ["es5", "es6", "dom"]
   },
   "exclude": [
     "node_modules"
