@@ -3,7 +3,7 @@ import { Rate } from "./classes/rate.class";
 import { findRate } from "./utils";
 
 // in that case it is better to use hashmap table (in object realization) for faster set and update flow;
-const dataStorage: DataStorageModel = {};
+export const dataStorage: DataStorageModel = {};
 
 export const setExchangeRate = (firstCurrency: string, secondCurrency: string, exchangeRate: number): void => {
     const direct = new Rate(firstCurrency, secondCurrency, exchangeRate);
