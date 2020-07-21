@@ -5,10 +5,16 @@
     "sourceMap": true,
     "outDir": "./dist",
     "declaration": true,
-    "lib": ["es5", "es6", "dom"]
+    "lib": [
+      "es5",
+      "es6",
+      "dom"
+    ]
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "local",
+    "dist"
   ],
   "include": [
     "src/**/*"
