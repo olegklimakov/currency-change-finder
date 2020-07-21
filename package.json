@@ -1,0 +1,7 @@
+{
+  "name": "curfind",
+  "version": "1.0.0",
+  "description": "Can be used to find exchange currency pair in limited data set",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+}
