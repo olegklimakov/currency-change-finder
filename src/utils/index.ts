@@ -1,5 +1,5 @@
-import { DataStorageModel } from "./models/data-storage.model";
-import { Rate } from "./classes/rate.class";
+import { DataStorageModel } from "../models/data-storage.model";
+import { Rate } from "../classes/rate.class";
 
 const SEPARATOR: string = '-';
 interface UpdatedOriginalData { filtered: Rate[], updatedOriginal: Rate[] }
@@ -21,7 +21,7 @@ export const findRate = (first: string, second: string, data: DataStorageModel):
     // in case of 10 currencies it is okay to use recursive functions, but here we try to make ± universal library for public use;
     while (foundedRate < 0) {
         if( !filterByLast.length) { return 0; }
-        const result = findExpectedResult(filterByLast, first, second); // check filtered array
+        const result = findExpectedResults(filterByLast, first, second); // check filtered array
         if (result.length) {
             foundedRate = findLessValue(result); // and here we will done with cycle;
         } else {
@@ -34,11 +34,11 @@ export const findRate = (first: string, second: string, data: DataStorageModel):
 };
 
 //Array of suitable items (because we can get it by different ways)
-const findExpectedResult = (filteredData: Rate[], first: string, second: string): Rate[] => {
+export const findExpectedResults = (filteredData: Rate[], first: string, second: string): Rate[] => {
     return filteredData.filter(rate => rate.isTheSame(first, second))
 }
 
-const updateFilteredArrayByFindInDepths = (filteredBySecondCurrency: Rate[], original: Rate[]): UpdatedOriginalData  => {
+export const updateFilteredArrayByFindInDepths = (filteredBySecondCurrency: Rate[], original: Rate[]): UpdatedOriginalData  => {
     let updatedOriginal = original;
 
     // if we want to find RUB - CAD, here we try to make new array which replaces USD - CAD with RUB - USD and other acceptable;
@@ -63,7 +63,7 @@ const updateFilteredArrayByFindInDepths = (filteredBySecondCurrency: Rate[], ori
 // from CAD-USD to CAD - EUR
 // from RUB - USD  to RUB - EUR
 // keep second currency the same and calculate;
-const makeNewArrayItemsWithNewRate = ( associatedArray: Rate[], currentFilteredItem: Rate ): Rate[] => {
+export const makeNewArrayItemsWithNewRate = ( associatedArray: Rate[], currentFilteredItem: Rate ): Rate[] => {
     associatedArray.forEach((rate, index) => {
         associatedArray[index] = new Rate(
             rate.first,
@@ -75,7 +75,7 @@ const makeNewArrayItemsWithNewRate = ( associatedArray: Rate[], currentFilteredI
 }
 
 // in case we have 2 possibilities to get rate we should get lower (can be customised in future)
-const findLessValue = (filteredData: Rate[]): number => {
+export const findLessValue = (filteredData: Rate[]): number => {
     return filteredData.reduce((acc, item) => {
         // take lowest number from rate;
         return item.exchangeRate < acc || acc == 0 ? item.exchangeRate : acc ;
@@ -83,6 +83,6 @@ const findLessValue = (filteredData: Rate[]): number => {
 }
 
 // to avoid infinite loops we should reduce number of items in origin array;
-const removeFilteredItemsFromOriginArray = (filteredData: Rate[], origin: Rate[]): Rate[] => {
+export const removeFilteredItemsFromOriginArray = (filteredData: Rate[], origin: Rate[]): Rate[] => {
     return origin.filter(originalItems => !filteredData.some(item => originalItems.isTheSame(item.first, item.second) || originalItems.isReverted(item)))
 }

@@ -15,7 +15,8 @@
   "exclude": [
     "node_modules",
     "local",
-    "dist"
+    "dist",
+    "coverage"
   ],
   "include": [
     "src/**/*"

@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Rate = void 0;
 const utils_1 = require("../utils");
 class Rate {
-    constructor(first, second, rate) {
+    constructor(first, second, rate = 0) {
         this.first = first;
         this.second = second;
         this.exchangeRate = parseFloat(rate.toFixed(6)); // for better double calculation
