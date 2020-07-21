@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc",
     "start": "./node_modules/.bin/tsc-watch --onSuccess \"nodemon local/index.js --watch\"",
-    "test": "jest --watchAll",
+    "test": "jest",
     "coverage": "jest --coverage"
   },
   "devDependencies": {
