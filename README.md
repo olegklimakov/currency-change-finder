@@ -1,3 +1,5 @@
+![CI](https://github.com/olegklimakov/currency-change-finder/workflows/CI/badge.svg)
+[![Build Status](https://travis-ci.com/olegklimakov/currency-change-finder.svg?branch=master)](https://travis-ci.com/olegklimakov/currency-change-finder)
 # Currency Rate Finder
 
 ## How to run locally
