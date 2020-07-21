@@ -1,14 +1,15 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es5",
+    "target": "ESNext",
     "sourceMap": true,
     "outDir": "./dist",
     "declaration": true,
     "lib": [
       "es5",
       "es6",
-      "dom"
+      "dom",
+      "es2017"
     ]
   },
   "exclude": [
