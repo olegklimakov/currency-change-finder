@@ -3,5 +3,6 @@ module.exports = {
     testEnvironment: 'node',
     testRegex: '/src/.*\\.(test|spec)?\\.(ts|tsx)$',
     moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
-    // testResultsProcessor: "./node_modules/jest-html-reporter",
+    testResultsProcessor: "./node_modules/jest-html-reporter",
+    collectCoverage: true
 };

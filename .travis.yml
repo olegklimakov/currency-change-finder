@@ -5,4 +5,4 @@ cache:
 node_js:
   - "10"
 after_success:
-  - codecov
+  - codecov -f coverage/*.json
